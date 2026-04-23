@@ -182,3 +182,43 @@ streamlit run app.py
 ```
 
 The Gemini classification results are cached after the first run. Subsequent runs only re-classify newly ingested notices, making re-runs significantly faster and cheaper.
+
+---
+
+## Quickstart — Clone and Run Locally
+
+### Prerequisites
+
+- Python 3.11+
+- A Google Gemini API key ([get one here](https://aistudio.google.com/app/apikey))
+
+### Steps
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/RahilChadha/Mercator_DataEngineering.git
+cd Mercator_DataEngineering
+
+# 2. (Recommended) Create and activate a virtual environment
+python -m venv venv
+source venv/bin/activate        # macOS / Linux
+# venv\Scripts\activate         # Windows
+
+# 3. Install dependencies
+pip install requests pandas numpy duckdb pyproj \
+            google-generativeai streamlit folium streamlit-folium python-dotenv
+
+# 4. Add your Gemini API key
+cp .env.example .env
+# Open .env and replace "your_gemini_api_key_here" with your actual key
+
+# 5. Run the ETL pipeline (fetches live data and builds the warehouse)
+python run_pipeline.py
+
+# 6. Launch the Streamlit dashboard
+streamlit run app.py
+```
+
+The dashboard will open automatically at `http://localhost:8501`.
+
+> **Note:** The first pipeline run calls the Gemini API to classify ~2,200 notices, which takes a few minutes. Results are cached locally, so subsequent runs are much faster.
