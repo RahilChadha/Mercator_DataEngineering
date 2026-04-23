@@ -1,0 +1,24 @@
+# Environment / secrets
+.env
+
+# Data files (large, not for version control)
+data/raw/
+data/processed/
+data/*.duckdb
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
